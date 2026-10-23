@@ -1,0 +1,8 @@
+[project]
+name = "hub"
+version = "0.1.0"
+description = "Local-first personal command hub that writes everything into an Obsidian vault."
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

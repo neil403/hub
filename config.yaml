@@ -1,0 +1,30 @@
+# Hub configuration. Secrets do NOT go here -- they live in .env (or the OS
+# keychain for HAC). This file is safe to commit.
+
+# Where the Obsidian vault lives.
+#   auto -> the iCloud Obsidian folder for this OS, in a vault named vault_name:
+#     Windows: %USERPROFILE%\iCloudDrive\iCloud~md~obsidian\<vault_name>
+#     macOS:   ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/<vault_name>
+#   Or an absolute path. On Windows use forward slashes or single quotes,
+#   e.g. 'C:\Users\me\iCloudDrive\iCloud~md~obsidian\Hub'.
+# HUB_VAULT_PATH in .env overrides this.
+vault_path: auto
+vault_name: Hub
+
+log_level: INFO
+
+# One entry per connector. Each phase flips its connectors on.
+connectors:
+  cloudflare: {enabled: false}   # Phase 2 - BUS-001
+  linear:     {enabled: false}   # Phase 2 - BUS-002 (+ DECA, Phase 4)
+  classroom:  {enabled: false}   # Phase 3 - SCH-001
+  hac:        {enabled: false}   # Phase 3 - SCH-002
+  github:     {enabled: false}   # Phase 4 - EC-002
+  instagram:  {enabled: false}   # Phase 5 - SOC-001
+
+# Optional LLM features. The hub works fully with enabled: false.
+# Grades and credentials are never sent to an LLM.
+llm:
+  enabled: false
+  provider: gemini
+  model: gemini-flash-latest
