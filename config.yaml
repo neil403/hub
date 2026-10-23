@@ -23,8 +23,13 @@ connectors:
   instagram:  {enabled: false}   # Phase 5 - SOC-001
 
 # Optional LLM features. The hub works fully with enabled: false.
-# Grades and credentials are never sent to an LLM.
+# Grades and credentials are never sent to an LLM -- local or not.
 llm:
   enabled: false
-  provider: gemini
-  model: gemini-flash-latest
+  # ollama: runs on this PC's GPU. Free, private, no rate limits.
+  #   Install from https://ollama.com, then: ollama pull qwen2.5:14b
+  # gemini: Google AI Studio free tier (needs GEMINI_API_KEY in .env).
+  provider: ollama
+  model: qwen2.5:14b
+  ollama_url: http://localhost:11434
+  gemini_model: gemini-flash-latest
